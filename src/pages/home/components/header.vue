@@ -4,11 +4,15 @@
       <span class="iconfont">&#xe624;</span>
     </div>
     <div class="header-middle">
-      <span class="iconfont">&#xe632;</span>输入城市/景点</div>
-    <div class="header-right">
-      <span class="iconfont">&#xe62d;</span>
-      {{ this.city }}
+      <span class="iconfont">&#xe632;</span>
+      输入城市/景点
+    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        <span class="iconfont">&#xe62d;</span>
+        {{ this.city }}
       </div>
+    </router-link>
   </div>
   <!-- 放在css里面的实在不知怎么注释 @import '~@/assets/styles/variable.styl' @表示src文件 -->
 </template>
@@ -51,6 +55,7 @@ export default {
       width 1.24rem
       text-align center
       padding-right .15rem
+      color: #ffffff
       .iconfont
         font-size .2rem
 
