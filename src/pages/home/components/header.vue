@@ -7,7 +7,7 @@
       <span class="iconfont">&#xe632;</span>输入城市/景点</div>
     <div class="header-right">
       <span class="iconfont">&#xe62d;</span>
-      城市
+      {{ this.city }}
       </div>
   </div>
   <!-- 放在css里面的实在不知怎么注释 @import '~@/assets/styles/variable.styl' @表示src文件 -->
@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: String
+  }
 }
 </script>
 

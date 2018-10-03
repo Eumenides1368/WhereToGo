@@ -1,12 +1,12 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
             <img class="icon-img-content" :src="item.imgUrl">
           </div>
-          <p class="icon-img-desc">{{ item.imgDesc }}</p>
+          <p class="icon-img-desc">{{ item.desc }}</p>
         </div>
       </swiper-slide>
     </swiper>
@@ -16,53 +16,59 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data: function () {
     return {
-      imgList: [
-        {
-          id: '001',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          imgDesc: '热门景点'
-        }, {
-          id: '002',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          imgDesc: '网红top榜'
-        }, {
-          id: '003',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-          imgDesc: '动植物园'
-        }, {
-          id: '004',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-          imgDesc: '一日游'
-        }, {
-          id: '005',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          imgDesc: '必有景点'
-        }, {
-          id: '006',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
-          imgDesc: '故都的秋'
-        }, {
-          id: '007',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
-          imgDesc: '恐龙园'
-        }, {
-          id: '008',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-          imgDesc: '亲子游'
-        }, {
-          id: '009',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/75/eca3ce656c886502.png',
-          imgDesc: '天目湖'
-        }
-      ]
+      swiperOption: {
+        autoPlay: false
+      }
+      // imgList: [
+      //   {
+      //     id: '001',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
+      //     imgDesc: '热门景点'
+      //   }, {
+      //     id: '002',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
+      //     imgDesc: '网红top榜'
+      //   }, {
+      //     id: '003',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
+      //     imgDesc: '动植物园'
+      //   }, {
+      //     id: '004',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
+      //     imgDesc: '一日游'
+      //   }, {
+      //     id: '005',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
+      //     imgDesc: '必有景点'
+      //   }, {
+      //     id: '006',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
+      //     imgDesc: '故都的秋'
+      //   }, {
+      //     id: '007',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
+      //     imgDesc: '恐龙园'
+      //   }, {
+      //     id: '008',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
+      //     imgDesc: '亲子游'
+      //   }, {
+      //     id: '009',
+      //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/75/eca3ce656c886502.png',
+      //     imgDesc: '天目湖'
+      //   }
+      // ]
     }
   },
   computed: {
     pages: function () {
       const pages = []
-      this.imgList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []

@@ -2,7 +2,7 @@
   <div>
     <div class="info">周末去哪儿玩</div>
     <div class="wrapper border-bottom" >
-      <div v-for="item of weekList" :key="item.id">
+      <div v-for="item of list" :key="item.id">
         <img class="week-img" :src="item.imgUrl">
         <p class="week-location">{{ item.location }}</p>
         <p class="week-desc">{{ item.desc }}</p>
@@ -13,6 +13,10 @@
 
 <script>
 export default {
+  props: {
+    list: Array
+  }
+  /*
   data: function () {
     return {
       weekList: [{
@@ -33,6 +37,7 @@ export default {
       }]
     }
   }
+  */
 }
 </script>
 
